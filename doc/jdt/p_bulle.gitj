@@ -4,5 +4,16 @@
   "branch": "main",
   "me": "Step-EduVaud",
   "journalStartDate": null,
-  "exceptions": []
+  "exceptions": [
+    {
+      "id": "41d6fd74-9aa4-4e44-883b-3b6a2f43dca3",
+      "type": "commitless",
+      "name": "chore(théorie et explication du projet par le prof)",
+      "description": "",
+      "date": "2026-01-14T11:20:00.000Z",
+      "duration": 120,
+      "status": "Done",
+      "author": "Step-EduVaud"
+    }
+  ]
 }
