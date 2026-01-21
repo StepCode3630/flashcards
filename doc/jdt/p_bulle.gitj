@@ -14,6 +14,16 @@
       "duration": 120,
       "status": "Done",
       "author": "Step-EduVaud"
+    },
+    {
+      "id": "8113b3db-40c1-4547-9958-83172f5cd6f7",
+      "type": "commitless",
+      "name": "chore(explication du prof)",
+      "description": "",
+      "date": "2026-01-21T12:20",
+      "duration": 15,
+      "status": "Done",
+      "author": "Step-EduVaud"
     }
   ]
 }
