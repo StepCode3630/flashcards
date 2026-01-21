@@ -39,9 +39,24 @@ export default class TeachersController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params /*, request*/ }: HttpContext) {}
   /**
-   * Delete record
+   * Supprimer un enseignat
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ params, session, response }: HttpContext) {
+    //Sélectionne l'enseignant à supprimer
+    const teacher = await Teacher.findOrFail(params.id)
+
+    //Supprimer l'enseignant
+    await teacher.delete()
+
+    //Affiche un message à l'utilisateur
+    sessionStorage.flash(
+      'success',
+      `L'ensaignant ${teacher.lastname} ${teacher.firstname} a été supprimé avec succès !`
+    )
+
+    //redirige l'utilisateur sur la home
+    return response.redirect().toRoute
+  }
 }
