@@ -37,6 +37,16 @@
       "status": "Done",
       "author": "Step-EduVaud",
       "patch": true
+    },
+    {
+      "id": "90501b79-53c5-426c-8cd9-393b0ab3f8d3",
+      "type": "commitless",
+      "name": "chore(explication du prof)",
+      "description": "Explication du prof concernant le test formatif",
+      "date": "2026-01-28T14:30:00.000Z",
+      "duration": 65,
+      "status": "Done",
+      "author": "Step-EduVaud"
     }
   ]
 }
