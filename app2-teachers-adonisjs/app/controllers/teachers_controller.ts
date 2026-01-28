@@ -51,12 +51,12 @@ export default class TeachersController {
     await teacher.delete()
 
     //Affiche un message à l'utilisateur
-    sessionStorage.flash(
+    session.flash(
       'success',
       `L'ensaignant ${teacher.lastname} ${teacher.firstname} a été supprimé avec succès !`
     )
 
     //redirige l'utilisateur sur la home
-    return response.redirect().toRoute
+    return response.redirect().toRoute('home')
   }
 }
