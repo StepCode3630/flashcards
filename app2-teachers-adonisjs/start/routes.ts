@@ -7,7 +7,10 @@
 |
 */
 const TeachersController = () => import('#controllers/teachers_controller')
+
+const SectionsController = () => import('#controllers/sections_controllers')
 import router from '@adonisjs/core/services/router'
+
 router.get('/', [TeachersController, 'index']).as('home')
 
 // Route permettant de voir les détails d'un enseignant
@@ -21,3 +24,6 @@ router.get('/teacher/add', [TeachersController, 'create']).as('teacher.create')
 
 // Route permettant l'ajout de l'enseingant
 router.post('/teacher/add', [TeachersController, 'store']).as('teacher.store')
+
+// Route permettant de voir la page des sections
+router.get('/sections', [SectionsController, 'indexv2']).as('section.index')
