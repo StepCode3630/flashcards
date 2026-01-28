@@ -27,3 +27,6 @@ router.post('/teacher/add', [TeachersController, 'store']).as('teacher.store')
 
 // Route permettant de voir la page des sections
 router.get('/sections', [SectionsController, 'indexv2']).as('section.index')
+
+// Route permettant de delete une section
+router.delete('/section/:id/destroy', [SectionsController, 'destroy']).as('section.destroy')

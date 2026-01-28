@@ -1,4 +1,4 @@
-@component('components/layout', { title: 'Accueil' })
+@component('components/layout', { title: 'Sections' })
   <h3>
     Liste des sections
   </h3>
@@ -24,7 +24,7 @@
 
             {{-- Ajout d'un formulaire pour la suppression d'un enseignant --}}
             <form
-              action="{{ route('teacher.destroy', { id: section.id }) }}?_method=DELETE"
+              action="{{ route('section.destroy', { id: section.id }) }}?_method=DELETE"
               method="POST"
               style="display: inline"
             >
