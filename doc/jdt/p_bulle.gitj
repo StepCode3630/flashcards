@@ -47,6 +47,16 @@
       "duration": 65,
       "status": "Done",
       "author": "Step-EduVaud"
+    },
+    {
+      "id": "4d273c73-2ac2-44ce-8d31-1749e4ffeea2",
+      "type": "commitless",
+      "name": "chore(base de donnée)",
+      "description": "Explication de comment créer la base de donnée par le prof",
+      "date": "2026-02-04T13:25:00.000Z",
+      "duration": 45,
+      "status": "DONE",
+      "author": "Step-EduVaud"
     }
   ]
 }
