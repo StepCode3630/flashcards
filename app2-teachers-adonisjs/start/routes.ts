@@ -10,6 +10,7 @@ const TeachersController = () => import('#controllers/teachers_controller')
 
 const SectionsController = () => import('#controllers/sections_controllers')
 import router from '@adonisjs/core/services/router'
+// import { create } from 'domain'
 
 router.get('/', [TeachersController, 'index']).as('home')
 
@@ -30,3 +31,9 @@ router.get('/sections', [SectionsController, 'indexv2']).as('section.index')
 
 // Route permettant de delete une section
 router.delete('/section/:id/destroy', [SectionsController, 'destroy']).as('section.destroy')
+
+// Route permettant d'afficher le forms permettant l'ajout du la section
+router.get('/section/add', [SectionsController, 'create']).as('section.create')
+
+// Route permettamt l'ajout dune section
+router.post('/section/add', [SectionsController, 'store']).as('section.store')
