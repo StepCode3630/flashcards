@@ -11,6 +11,9 @@ export default class Card extends BaseModel {
   @column()
   declare answer: string
 
+  @column()
+  declare decks_id: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
