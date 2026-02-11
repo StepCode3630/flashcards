@@ -17,17 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          Capitales
-        </td>
-        <td>
-          Les capitales du monde
-        </td>
-        <td>
-          10
-        </td>
-      </tr>
-    </tbody>
-  </table>
-@endcomponent
+      @each ((deck) in decks)
+        <tr>
+          <td>
+            {{ deck.name }}
+          </td>
+          <td>
+            {{ deck.description }}
+          </td>
+          <td>
+            {{ deck.cards.length }}
+          </td>
+        @endeach
+        
+      </tbody>
+    </table>
+  @endcomponent
