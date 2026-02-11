@@ -8,3 +8,16 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #d4d4d4;
+}
+
+.container-header div {
+  display: flex;
+  gap: 1rem;
+}
