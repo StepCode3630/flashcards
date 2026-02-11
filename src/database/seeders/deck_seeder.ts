@@ -1,4 +1,5 @@
 import Deck from '#models/deck'
+import { DeckFactory } from '#database/factories/deck_factory'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {
@@ -17,5 +18,6 @@ export default class extends BaseSeeder {
         description: 'Description du deck 3',
       },
     ])
+    await DeckFactory.createMany(10)
   }
 }
