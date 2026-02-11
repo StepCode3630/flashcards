@@ -18,10 +18,26 @@ body {
 
 .container-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  background-color: #d4d4d4;
+  background-color: #aeb1d4;
+}
+
+.container-header button {
+  padding: 0.5rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: no-drop;
+  transition: 0.4s;
+}
+
+.container-header button:hover {
+  background-color: #357ab8;
+  transition: 0.1s;
+  transform: scale(1.1);
 }
 
 .container-header div {
