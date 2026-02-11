@@ -1,8 +1,8 @@
 {
-  "repoUrl": "https://github.com/Step-EduVaud/flashcards",
+  "repoUrl": "https://github.com/StepCode3630/flashcards",
   "projectName": "P_Bulle",
   "branch": "main",
-  "me": "Step-EduVaud",
+  "me": "StepCode3630",
   "journalStartDate": null,
   "exceptions": [
     {
@@ -13,7 +13,7 @@
       "date": "2026-01-14T11:20:00.000Z",
       "duration": 120,
       "status": "Done",
-      "author": "Step-EduVaud"
+      "author": "StepCode3630"
     },
     {
       "id": "8113b3db-40c1-4547-9958-83172f5cd6f7",
@@ -23,19 +23,19 @@
       "date": "2026-01-21T12:20",
       "duration": 15,
       "status": "Done",
-      "author": "Step-EduVaud"
+      "author": "StepCode3630"
     },
     {
       "id": "efdaa52e-aa47-46d6-b051-fd3c7d9f14e9",
       "type": "commitpatch",
       "sha": "06c2553846b9617c01020e21990e145700fa79da",
-      "url": "https://github.com/Step-EduVaud/flashcards/commit/06c2553846b9617c01020e21990e145700fa79da",
+      "url": "https://github.com/StepCode3630/flashcards/commit/06c2553846b9617c01020e21990e145700fa79da",
       "name": "feat(step3): Terminé",
       "description": "J'ai pris beaucoup de temps car j'avais un problème de configuration où je n'avais pas les commandes make:migration et je n'ai pas pu rejoindre le groupe user de Docker",
       "date": "2026-01-21T13:10:00.000Z",
       "duration": 90,
       "status": "Done",
-      "author": "Step-EduVaud",
+      "author": "StepCode3630",
       "patch": true
     },
     {
@@ -46,7 +46,7 @@
       "date": "2026-01-28T14:30:00.000Z",
       "duration": 65,
       "status": "Done",
-      "author": "Step-EduVaud"
+      "author": "StepCode3630"
     },
     {
       "id": "4d273c73-2ac2-44ce-8d31-1749e4ffeea2",
@@ -56,7 +56,7 @@
       "date": "2026-02-04T13:25:00.000Z",
       "duration": 45,
       "status": "DONE",
-      "author": "Step-EduVaud"
+      "author": "StepCode3630"
     }
   ]
 }
