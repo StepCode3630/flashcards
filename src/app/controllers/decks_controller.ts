@@ -1,6 +1,7 @@
 import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 import { deckValidator } from '#validators/deck'
+// import { title } from 'process'
 // import { title } from 'process'o
 
 export default class DecksController {
@@ -39,7 +40,11 @@ export default class DecksController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const deck = await Deck.query().where('id', params.id)
+
+    return view.render('pages/decks/show.edge', { title: "Détails d'un enseigant", deck })
+  }
 
   /**
    * Edit individual record

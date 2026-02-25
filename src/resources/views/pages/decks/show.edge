@@ -1,0 +1,69 @@
+@component('components/layout', { title: deck.name })
+  <div class="deck-container">
+    {{-- En-tête du Deck --}}
+    <div class="deck-header-info">
+      <div class="title-section">
+        <h1>
+          <span>Deck :</span>{{ deck.name || 'Pas de nom:(' }}
+        </h1>
+        <p class="deck-description">
+          {{ deck.description || 'Aucune description' }}
+        </p>
+      </div>
+
+      <div class="deck-actions">
+        <a href="" class="btn-secondary">Modifier</a>
+
+        <form
+          action="?_method=DELETE"
+          method="POST"
+          onsubmit="return confirm('Voulez-vous vraiment supprimer ce deck ?')"
+        >
+          {{ csrfField() }}
+          <button type="submit" class="btn-danger">Supprimer</button>
+        </form>
+      </div>
+    </div>
+
+    {{-- Tableau des Cartes --}}
+    <div class="cards-section">
+      <div class="section-header">
+        <h2>
+          Cartes
+        </h2>
+        <a href="" class="btn-primary">Ajouter une carte</a>
+      </div>
+
+      <table class="tableDecks">
+        <thead>
+          <tr>
+            <th>
+              Question
+            </th>
+            <th>
+              Réponse
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(card in cards)
+            <tr>
+              <td class="card-question">
+                {{ card.question }}
+              </td>
+              <td class="card-answer">
+                {{ card.answer }}
+              </td>
+            </tr>
+          @else
+            <tr>
+              <td colspan="2" style="text-align: center; padding: 2rem; color: #9ca3af;">
+                Ce deck ne contient pas encore de cartes.
+              </td>
+            </tr>
+          @end
+        </tbody>
+      </table>
+    </div>
+  </div>
+@endcomponent

@@ -278,3 +278,135 @@ button[type='submit'] {
   color: #1f2937;
   border-color: #9ca3af;
 }
+
+/* 1. On prépare la ligne pour qu'elle serve de cadre au lien */
+.row-clickable {
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+/* 2. L'astuce : on crée un calque invisible qui remplit toute la ligne */
+.stretched-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* Le lien passe au-dessus de tout le texte de la ligne */
+}
+
+/* 3. On stylise le lien pour qu'il ne ressemble pas à un lien bleu classique */
+.stretched-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 4. Effet visuel au survol de n'importe quel endroit de la ligne */
+.row-clickable:hover {
+  background-color: #f8fafc;
+  cursor: pointer;
+}
+
+/* Container global */
+.deck-container {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* En-tête du deck */
+.deck-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.title-section h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+.title-section h1 span {
+  color: #6366f1; /* Indigo pour le mot "Deck :" */
+  font-weight: 400;
+}
+
+.deck-description {
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Groupement des boutons */
+.deck-actions,
+.section-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.section-header {
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  color: #374151;
+}
+
+/* Styles des boutons */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+}
+.btn-primary:hover {
+  background: #4338ca;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.btn-danger:hover {
+  background: #fecaca;
+}
+
+/* Spécificités pour le tableau des cartes */
+.card-question {
+  font-weight: 600;
+  color: #1f2937;
+  width: 40%;
+}
+
+.card-answer {
+  color: #4b5563;
+}

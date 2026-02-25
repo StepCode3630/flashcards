@@ -17,19 +17,23 @@
       </tr>
     </thead>
     <tbody>
-      @each ((deck) in decks)
-        <tr>
+      @each(deck in decks)
+        <tr class="row-clickable">
           <td>
-            {{ deck.name }}
+            {{-- Le lien est ici, il "contient" le nom, mais va s'étendre partout --}}
+            <a href="{{ route('deck.show', { id: deck.id }) }}" class="stretched-link">
+              {{ deck.name }}
+        </a>
           </td>
           <td>
             {{ deck.description }}
           </td>
           <td>
+            {{-- Ici tu pourras mettre le vrai compte de cartes plus tard --}}
             1
           </td>
         </tr>
-      @endeach
+      @end
     </tbody>
   </table>
   <a href="{{ route('deck.create') }}" class="btn-primary">Ajouter un deck</a>
