@@ -14,7 +14,7 @@ export default class extends BaseSchema {
       table.timestamp('updated_at')
 
       table
-        .integer('decks_id')
+        .integer('deck_id')
         .unsigned()
         .references('id')
         .inTable(`decks`)

@@ -13,7 +13,7 @@ export default class Card extends BaseModel {
   @column()
   declare answer: string
 
-  @column({ columnName: 'decks_id' })
+  @column()
   declare deckId: number
 
   @belongsTo(() => Deck)
