@@ -242,3 +242,38 @@ button[type='submit']:hover {
 button[type='submit']:active {
   transform: scale(0.98);
 }
+
+/* Conteneur pour mettre les boutons côte à côte */
+.form-actions {
+  display: flex;
+  gap: 1rem; /* Espace entre les deux boutons */
+  margin-top: 1.5rem;
+}
+
+/* On ajuste un peu le bouton submit pour qu'il partage l'espace */
+button[type='submit'] {
+  flex: 2; /* Prend plus de place */
+  margin-top: 0; /* On enlève la marge qu'on avait mise avant */
+}
+
+/* Style du bouton Abandonner */
+.btn-cancel {
+  flex: 1; /* Prend moins de place */
+  display: inline-block;
+  text-align: center;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  border: 1px solid #d1d5db;
+}
+
+.btn-cancel:hover {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border-color: #9ca3af;
+}
