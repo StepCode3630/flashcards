@@ -2,9 +2,9 @@
   <h1>
     Mes decks
   </h1>
-  <table>
+  <table class="tableDecks">
     <thead>
-      <tr>
+      <tr class="thead1">
         <th>
           Titre
         </th>
@@ -32,5 +32,5 @@
       @endeach
     </tbody>
   </table>
-  <a href="{{ route('deck.create') }}">Ajouter</a>
+  <a href="{{ route('deck.create') }}" class="btn-primary">Ajouter un deck</a>
 @endcomponent

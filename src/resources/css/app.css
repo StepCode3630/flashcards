@@ -1,6 +1,9 @@
 * {
   margin: 0;
   padding: 0;
+  font-family:
+    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+    sans-serif;
 }
 
 html,
@@ -16,31 +19,226 @@ body {
   flex-direction: column;
 }
 
-.container-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1rem;
-  background-color: #aeb1d4;
+/* Style principal du header */
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #edf2f7;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  margin-bottom: 2rem;
 }
 
+/* Le conteneur pour centrer le contenu comme le reste du site */
+.container-header {
+  max-width: 1200px; /* À ajuster selon la largeur de ton site */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between; /* Logo à gauche, User à droite */
+  align-items: center; /* Aligne verticalement au milieu */
+}
+
+/* Section utilisateur (Nom + Bouton) */
+.container-header > div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Espace entre le pseudo et le bouton */
+}
+
+/* Style du nom d'utilisateur */
+.container-header p {
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Style du bouton Déco */
 .container-header button {
+  background-color: #f7fafc;
+  color: #e53e3e; /* Rouge pour indiquer une action de sortie */
+  border: 1px solid #e2e8f0;
   padding: 0.5rem 1rem;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: no-drop;
-  transition: 0.4s;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .container-header button:hover {
-  background-color: #357ab8;
-  transition: 0.1s;
-  transform: scale(1.1);
+  background-color: #fff5f5;
+  border-color: #feb2b2;
+  transform: translateY(-1px);
 }
 
-.container-header div {
-  display: flex;
-  gap: 1rem;
+/* Optionnel : animation légère sur le logo au survol */
+.container-header a img {
+  transition: opacity 0.2s;
+}
+
+.container-header a:hover img {
+  opacity: 0.8;
+}
+
+/* Style général du titre */
+h1 {
+  color: #1a202c;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* Conteneur de la table pour les bords arrondis et l'ombre */
+.tableDecks {
+  width: 80%;
+  border-collapse: separate; /* Important pour les arrondis */
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+/* Style de l'en-tête */
+.thead1 th {
+  background-color: #4f46e5; /* Un beau violet/indigo */
+  color: white;
+  text-align: left;
+  padding: 15px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* Style des cellules du corps */
+.tableDecks td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #edf2f7;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+/* Effet de survol sur les lignes */
+.tableDecks tbody tr:hover {
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease;
+}
+
+/* Enlever la bordure sur la dernière ligne */
+.tableDecks tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Style du bouton Ajouter (lien) */
+a[href*='create'] {
+  display: inline-block;
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+}
+
+a[href*='create']:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+
+/* Container pour centrer le formulaire sur la page */
+.form-card {
+  max-width: 500px;
+  margin: 3rem auto;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Style du titre à l'intérieur de la carte */
+.form-card h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111827;
+  font-size: 1.5rem;
+}
+
+/* Espacement entre les groupes d'inputs */
+form div {
+  margin-bottom: 1.25rem;
+}
+
+/* Style des labels */
+label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Style des inputs et textarea */
+input[type='text'],
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  box-sizing: border-box; /* Évite que l'input dépasse du cadre */
+}
+
+/* Effet au clic (focus) */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Taille pour la description */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Style du bouton de validation */
+button[type='submit'] {
+  width: 100%;
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+  margin-top: 1rem;
+}
+
+button[type='submit']:hover {
+  background-color: #4338ca;
+}
+
+button[type='submit']:active {
+  transform: scale(0.98);
 }
