@@ -1,0 +1,14 @@
+{
+  "shared": {
+    "fields": {
+      "name": "nom",
+      "description": "description"
+    }
+  },
+  "messages": {
+    "required": "Le champ {{ field }} est obligatoire",
+    "minLength": "Le champ {{ field }} doit faire au moins {{ min }} caractères",
+    "maxLength": "Le champ {{ field }} est trop long",
+    "string": "Le champ {{ field }} doit être du texte"
+  }
+}
