@@ -127,6 +127,7 @@ h1 {
 .tableDecks tbody tr:hover {
   background-color: #f8fafc;
   transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
 /* Enlever la bordure sur la dernière ligne */
