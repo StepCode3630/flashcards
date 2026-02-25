@@ -70,6 +70,16 @@
       "status": "WIP",
       "author": "StepCode3630",
       "patch": true
+    },
+    {
+      "id": "2fc99b52-19ce-44f6-a9bd-d2c79abc48af",
+      "type": "commitless",
+      "name": "chore(Scrum meeting)",
+      "description": "Explication du prof de ce qu'il faut faire\r\n\r\nSCRUM MEETING\r\nCe que j'ai fait: \r\nJ'ai créé la base de donnée avec les migrations, model, des controlleurs, seeders et des factory.\r\nJe peux aussi afficher l'accueil avec un header et la liste des decks (titre, description, nbr cartes)\r\n\r\nCe que je vais faire: \r\ncréer un bouton pour \"ajouter\" et pouvoir en ajouter\r\nPouvoir modifier un deck\r\nPouvoir supprimer un deck\r\nPouvoir montrer le contenant d'un deck\r\n\r\nProblème: Non",
+      "date": "2026-02-25T12:20",
+      "duration": 30,
+      "status": "DONE",
+      "author": "StepCode3630"
     }
   ]
 }
