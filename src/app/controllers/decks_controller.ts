@@ -1,7 +1,7 @@
 import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 import { deckValidator } from '#validators/deck'
-import { title } from 'process'
+// import { title } from 'process'o
 
 export default class DecksController {
   /**
@@ -31,7 +31,7 @@ export default class DecksController {
 
     const deck = await Deck.create({ name, description })
 
-    session.flash('success', 'Deck créé avec succès')
+    session.flash('success', `Deck ${deck.name} créé avec succès`)
 
     return response.redirect().toRoute('home')
   }

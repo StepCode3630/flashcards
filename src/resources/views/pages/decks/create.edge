@@ -2,14 +2,32 @@
   <h1>
     Nouveau deck
   </h1>
-  <form method="POST" action="/decks">
+  <form method="POST" action="{{ route('decks.store') }}">
+    {{ csrfField() }}
     <div>
       <label for="name">Nom</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" value="{{ old('name') ?? '' }}" />
+      {{-- Affichage des erreurs pour le nom --}}
+      @inputError('name')
+        @each(message in $messages)
+          <p style="color: red; font-size: 0.8em;">
+            {{ message }}
+          </p>
+        @end
+      @end
     </div>
+
     <div>
       <label for="description">Description</label>
-      <textarea id="description" name="description"></textarea>
+      <textarea id="description" name="description">{{ old('description') ?? '' }}</textarea>
+      {{-- Affichage des erreurs pour la description --}}
+      @inputError('description')
+        @each(message in $messages)
+          <p style="color: red; font-size: 0.8em;">
+            {{ message }}
+          </p>
+        @end
+      @end
     </div>
     <button type="submit">Créer</button>
   </form>
