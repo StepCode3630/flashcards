@@ -41,9 +41,9 @@ export default class DecksController {
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
-    const deck = await Deck.query().preload('cards').where('id', params.id)
+    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
     // const nbcards = deck.cards.length
-    return view.render('pages/decks/show.edge', { title: "Détails d'un enseigant", deck })
+    return view.render('pages/decks/show.edge', { title: "Détails d'un deck", deck })
   }
 
   /**

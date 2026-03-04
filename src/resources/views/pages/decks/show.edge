@@ -1,4 +1,4 @@
-@component('components/layout', { title: deck.name })
+@component('components/layout', { title: deck.name || 'Deck' })
   <div class="deck-container">
     {{-- En-tête du Deck --}}
     <div class="deck-header-info">
@@ -46,15 +46,17 @@
           </tr>
         </thead>
         <tbody>
-          @each(card in cards)
-            <tr>
-              <td class="card-question">
-                {{ card.question }}
-              </td>
-              <td class="card-answer">
-                {{ card.answer }}
-              </td>
-            </tr>
+          @if(deck.cards.length > 0)
+            @each(card in deck.cards)
+              <tr>
+                <td class="card-question">
+                  {{ card.question }}
+                </td>
+                <td class="card-answer">
+                  {{ card.answer }}
+                </td>
+              </tr>
+            @end
           @else
             <tr>
               <td colspan="2" style="text-align: center; padding: 2rem; color: #9ca3af;">
