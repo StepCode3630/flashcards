@@ -15,7 +15,7 @@
         <a href="" class="btn-secondary">Modifier</a>
 
         <form
-          action="?_method=DELETE"
+          action="{{ route('deck.destroy', { id: deck.id }) }}?_method=DELETE"
           method="POST"
           onsubmit="return confirm('Voulez-vous vraiment supprimer ce deck ?')"
         >
