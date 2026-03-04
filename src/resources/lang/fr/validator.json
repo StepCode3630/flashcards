@@ -2,7 +2,9 @@
   "shared": {
     "fields": {
       "name": "nom",
-      "description": "description"
+      "description": "description",
+      "question": "question",
+      "answer": "réponse"
     }
   },
   "messages": {

@@ -157,7 +157,7 @@ a[href*='create']:hover {
 
 /* Container pour centrer le formulaire sur la page */
 .form-card {
-  max-width: 500px;
+  width: 500px;
   margin: 3rem auto;
   background-color: #ffffff;
   padding: 2.5rem;
