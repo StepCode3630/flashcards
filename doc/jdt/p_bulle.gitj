@@ -80,6 +80,16 @@
       "duration": 30,
       "status": "DONE",
       "author": "StepCode3630"
+    },
+    {
+      "id": "020d2d11-dd05-4cd4-af47-a194660aee02",
+      "type": "commitless",
+      "name": "chore: Explication du prochain test par le prof",
+      "description": "",
+      "date": "2026-03-04T11:32:00.000Z",
+      "duration": 33,
+      "status": "DONE",
+      "author": "StepCode3630"
     }
   ]
 }
