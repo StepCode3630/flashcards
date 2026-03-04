@@ -43,9 +43,9 @@
         <tbody>
           @if(deck.cards && deck.cards.length > 0)
             @each(card in deck.cards)
-              <tr>
+              <tr class="row-cliquable">
                 <td class="card-question">
-                  {{ card.question }}
+                  <a href="{{ route('card.show', { id: card.id }) }}" class="stretched-link">{{ card.question }}</a>
                 </td>
                 <td class="card-answer">
                   {{ card.answer }}

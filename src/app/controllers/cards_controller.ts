@@ -39,7 +39,10 @@ export default class CardsController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const card = await Card.findOrFail(params.id)
+    return view.render('pages/cards/showcard.edge', { title: "Détails d'une carte", card })
+  }
 
   /**
    * Edit individual record

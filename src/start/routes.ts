@@ -9,6 +9,7 @@
 const DecksController = () => import('#controllers/decks_controller')
 const CardsController = () => import('#controllers/cards_controller')
 import router from '@adonisjs/core/services/router'
+import { get } from 'http'
 
 //Decks routes
 router.get('/', [DecksController, 'index']).as('home')
@@ -27,3 +28,5 @@ router.delete('/deck/:id/destroy', [DecksController, 'destroy']).as('deck.destro
 //Cards routes
 router.get('/decks/:deckId/cards/create', [CardsController, 'create']).as('cards.create')
 router.post('/card/create', [CardsController, 'store']).as('card.store')
+
+router.get('/card/:id/show', [CardsController, 'show']).as('card.show')

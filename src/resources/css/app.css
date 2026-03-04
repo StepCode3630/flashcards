@@ -575,9 +575,95 @@ button[type='submit'] {
 .tableCards tbody tr:hover {
   background-color: #f8fafc;
   transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
 /* Enlever la bordure sur la dernière ligne */
 .tableCards tbody tr:last-child td {
   border-bottom: none;
+}
+
+/* 1. Le conteneur qui donne la perspective 3D */
+.card-scene {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  perspective: 1000px;
+  margin: 5rem auto;
+}
+
+/* 2. La carte elle-même (le pivot) */
+.card-details {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  background: none !important; /* On gère le fond sur les faces */
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 3. Classe activée par le clic via JS */
+.card-details.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* 4. Style commun aux deux faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Cache le dos d'une face quand elle est retournée */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background: white;
+  border: 1px solid #edf2f7;
+  text-align: center;
+  transition: box-shadow 0.5s ease;
+}
+
+.card-front:hover,
+.card-back:hover {
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.5s ease;
+}
+
+/* 5. La face arrière est déjà tournée par défaut */
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #f8fafc;
+}
+
+.card-details h1 {
+  font-size: 1rem;
+  color: #6366f1;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.card-details p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-details small {
+  margin-top: auto;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+/* On centre les actions sous la carte */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
