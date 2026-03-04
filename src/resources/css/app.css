@@ -319,12 +319,21 @@ button[type='submit'] {
 .deck-header-info {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 3rem;
   background: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.the-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
 }
 
 .title-section h1 {
@@ -409,4 +418,159 @@ button[type='submit'] {
 
 .card-answer {
   color: #4b5563;
+}
+
+/* --- Améliorations pour la page Show --- */
+
+.deck-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* On rend l'en-tête plus "Card" */
+.deck-header-info {
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease;
+}
+
+.title-section h1 span {
+  opacity: 0.6;
+  font-weight: 300;
+  margin-right: 8px;
+}
+
+/* Nouveau bouton supprimer plus doux pour l'en-tête */
+.btn-danger-light {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-danger-light:hover {
+  background-color: #fecaca;
+}
+
+/* Style pour le message vide */
+.empty-msg {
+  text-align: center;
+  padding: 3rem !important;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* --- Modale améliorée et centrée --- */
+
+.confirmation-modal {
+  /* Ces 5 lignes permettent le centrage parfait */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Changé en 'flex' par le JS */
+  justify-content: center;
+  align-items: center;
+
+  /* Style visuel */
+  z-index: 9999; /* Pour passer au-dessus de tout */
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4); /* Fond sombre transparent */
+}
+
+.confirmation-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px; /* Évite qu'elle soit trop large sur PC */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+  /* Animation d'apparition (optionnel mais sympa) */
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* On garde tes styles de texte et icônes */
+.modal-alert-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.confirmation-content p {
+  font-size: 1.1rem;
+  color: #1a202c;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Tes boutons */
+.btn-danger-real {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  font-weight: bold;
+}
+
+/* Tableau */
+.tableCards {
+  width: 50rem;
+  border-collapse: separate; /* Important pour les arrondis */
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.tableCards td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #edf2f7;
+  color: #4a5568;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.thead2 th {
+  background-color: #4f46e5; /* Un beau violet/indigo */
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* Effet de survol sur les lignes */
+.tableCards tbody tr:hover {
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease;
+}
+
+/* Enlever la bordure sur la dernière ligne */
+.tableCards tbody tr:last-child td {
+  border-bottom: none;
 }

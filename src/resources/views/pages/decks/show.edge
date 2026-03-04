@@ -4,7 +4,7 @@
     <div class="deck-header-info">
       <div class="title-section">
         <h1>
-          <span>Deck :</span>{{ deck.name || 'Pas de nom:(' }}
+          <span>Deck :</span>{{ deck.name || 'Sans nom' }}
         </h1>
         <p class="deck-description">
           {{ deck.description || 'Aucune description' }}
@@ -12,31 +12,24 @@
       </div>
 
       <div class="deck-actions">
-        <a href="" class="btn-secondary">Modifier</a>
-
-        <form
-          action="{{ route('deck.destroy', { id: deck.id }) }}?_method=DELETE"
-          method="POST"
-          onsubmit="return confirm('Voulez-vous vraiment supprimer ce deck ?')"
-        >
-          {{ csrfField() }}
-          <button type="submit" class="btn-danger">Supprimer</button>
-        </form>
+        <a href="{{ route('deck.edit', { id: deck.id }) }}" class="btn-secondary">Modifier</a>
+        <button type="button" class="btn-danger-light" onclick="openModal('{{ deck.id }}')">Supprimer</button>
       </div>
     </div>
 
-    {{-- Tableau des Cartes --}}
+    {{-- Section des Cartes --}}
     <div class="cards-section">
       <div class="section-header">
         <h2>
           Cartes
         </h2>
-        <a href="" class="btn-primary">Ajouter une carte</a>
+        {{--  <a href="{{ route('cards.create', { deckId: deck.id }) }}" class="btn-primary">+ Ajouter une carte</a>  --}}
       </div>
 
-      <table class="tableDecks">
+      <table class="tableCards">
         <thead>
-          <tr>
+          <tr class="thead2">
+            {{-- On réutilise ta classe thead1 --}}
             <th>
               Question
             </th>
@@ -46,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          @if(deck.cards.length > 0)
+          @if(deck.cards && deck.cards.length > 0)
             @each(card in deck.cards)
               <tr>
                 <td class="card-question">
@@ -59,8 +52,8 @@
             @end
           @else
             <tr>
-              <td colspan="2" style="text-align: center; padding: 2rem; color: #9ca3af;">
-                Ce deck ne contient pas encore de cartes.
+              <td colspan="2" class="empty-msg">
+                Ce deck est encore vide...
               </td>
             </tr>
           @end
@@ -68,4 +61,50 @@
       </table>
     </div>
   </div>
+
+  {{-- Formulaire de suppression --}}
+  <form
+    id="delete-form-{{ deck.id }}"
+    action="{{ route('deck.destroy', { id: deck.id }) }}?_method=DELETE"
+    method="POST"
+    style="display:none;"
+  >
+    {{ csrfField() }}
+  </form>
+
+  {{-- Modale de confirmation --}}
+  <div id="delete-confirmation" class="confirmation-modal" style="display:none">
+    <div class="confirmation-content">
+      <div class="modal-alert-icon">
+
+      </div>
+      <p>
+        Voulez-vous vraiment supprimer ce deck ?
+      </p>
+      <div class="confirmation-actions">
+        <button id="confirm-delete" class="btn-danger-real">Ok</button>
+
+        <button id="cancel-delete" class="btn-secondary" onclick="closeModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentFormId = null;
+
+    function openModal(id) {
+      currentFormId = `delete-form-${id}`;
+      document.getElementById("delete-confirmation").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("delete-confirmation").style.display = "none";
+    }
+
+    document.getElementById("confirm-delete").addEventListener("click", () => {
+      if (currentFormId) {
+        document.getElementById(currentFormId).submit();
+      }
+    });
+  </script>
 @endcomponent
