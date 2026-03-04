@@ -20,7 +20,6 @@
       @each(deck in decks)
         <tr class="row-clickable">
           <td>
-            {{-- Le lien est ici, il "contient" le nom, mais va s'étendre partout --}}
             <a href="{{ route('deck.show', { id: deck.id }) }}" class="stretched-link">
               {{ deck.name }}
         </a>
@@ -29,8 +28,7 @@
             {{ deck.description }}
           </td>
           <td>
-            {{-- Ici tu pourras mettre le vrai compte de cartes plus tard --}}
-            1
+            {{ deck.$extras.cards_count }}
           </td>
         </tr>
       @end

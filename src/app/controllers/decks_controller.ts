@@ -10,7 +10,10 @@ export default class DecksController {
    */
   async index({ view }: HttpContext) {
     //Affiche tous les decks
-    const decks = await Deck.query().orderBy('created_at', 'desc').orderBy('name', 'asc')
+    const decks = await Deck.query()
+      .withCount('cards')
+      .orderBy('created_at', 'desc')
+      .orderBy('name', 'asc')
 
     return view.render('pages/home', { decks })
   }
