@@ -24,7 +24,8 @@ Ce projet utilise la puissance d'AdonisJS pour le backend et Docker pour garanti
 
 Assurez-vous d'avoir installé les outils suivants :
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) (obligatoire, avec WSL2 activé sur Windows)
+- [Node.js](https://nodejs.org/) v18+ (inclut npm)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) (WSL2 activé sur Windows)
 - [Git](https://git-scm.com/)
 - Un navigateur ou un client API (Postman, Insomnia)
 
@@ -39,15 +40,22 @@ git clone <url-du-repo>
 cd <nom-du-projet>
 ```
 
-### 2. Lancer l'environnement Docker
+### 2. Installer les dépendances
 
-Cette commande télécharge les images et lance les services Node, MySQL et phpMyAdmin en arrière-plan.
+Rendez-vous à la racine du projet puis installez les modules Node :
 
 ```bash
-docker compose up -d
+npm install            # ou yarn install
 ```
 
-> _Note : Attendez environ 10-15 secondes lors du premier lancement pour que MySQL initialise la base._
+> **Optionnel** : si vous souhaitez profiter du conteneur MySQL (et phpMyAdmin),
+> lancez-le maintenant avec Docker :
+>
+> ```bash
+> docker compose up -d db phpmyadmin
+> ```
+> Le service `app` n'est pas nécessaire puisque vous exécuterez le serveur en
+> local.
 
 ### 3. Configuration des variables d'environnement
 
@@ -56,17 +64,20 @@ Copiez le fichier d'exemple et vérifiez les accès DB.
 - **Linux / Mac / PowerShell :** `cp .env.example .env`
 - **Windows (CMD) :** `copy .env.example .env`
 
-**Important :** Vérifiez que votre `.env` contient ces valeurs pour Docker :
+**Important :** ajustez les variables selon l'environnement choisi :
+
+- en local pur : la base doit être joignable sur `127.0.0.1:3306` (mysql natif,
+  WSL, etc.)
+- avec le conteneur Docker : la même configuration fonctionne car `docker
+  compose` publie le port 3306 sur localhost.
 
 ```env
-DB_HOST=db
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=root
 DB_DATABASE=db_flashCards
 ```
-
-_(Où `db` correspond au nom du service MySQL dans votre `docker-compose.yml`)_
 
 ### 4. Initialisation de l'application
 
@@ -74,59 +85,73 @@ Générez la clé de sécurité et préparez la base de données.
 
 ```bash
 # Générer la APP_KEY (remplit automatiquement le .env)
-docker compose exec app node ace generate:key
+node ace generate:key
 
 # Lancer les migrations (création des tables)
-docker compose exec app node ace migration:run
+node ace migration:run
 
 # Remplir la base avec des données de test (si le projet contient des seeders)
-docker compose exec app node ace db:seed
+node ace db:seed
 ```
-
 ---
 
 ## 🖥️ Utilisation
 
-### Accès aux services
+### Lancer les containers Docker (optionnel)
 
-| Service            | URL                                            | Identifiants par défaut (si applicables)    |
-| :----------------- | :--------------------------------------------- | :------------------------------------------ |
-| **🚀 Application** | [http://localhost:3333](http://localhost:3333) | -                                           |
-| **🗃️ phpMyAdmin**  | [http://localhost:8080](http://localhost:8080) | User: `root` / Pass: `root` (Serveur: `db`) |
-
-### Démarrer le serveur de développement
-
-Si Node n'est pas déjà lancé par Docker Compose, exécutez :
+Si vous souhaitez utiliser le conteneur MySQL/ phpMyAdmin, démarrez-les :
 
 ```bash
-docker compose exec app node ace serve --watch
+docker compose up -d db phpmyadmin
 ```
+
+### Démarrer le serveur de développement local
+
+```bash
+npm run dev          # défini dans le package.json
+# ou directement
+node ace serve --watch
+```
+
+L'application sera disponible à [http://localhost:3333](http://localhost:3333).
+
+Si vous utilisez phpMyAdmin ou un autre outil, configurez-le pour pointer vers votre
+serveur MySQL local (`127.0.0.1:3306`).
 
 ### Commandes utiles
 
-- **Arrêter le projet :** `docker compose down`
-- **Arrêter et supprimer les volumes (Reset complet) :** `docker compose down -v`
-- **Réinitialiser la base de données proprement :** ```bash
-  docker compose exec app node ace migration:refresh --seed
-
-````
+- **Arrêter le serveur :** `Ctrl+C` dans le terminal où le serveur tourne
+- **Réinitialiser la base de données proprement :**
+  ```bash
+  node ace migration:refresh --seed
+  ```
+- **Gérer les containers Docker :**
+  ```bash
+  docker compose down          # arrêter les services
+  docker compose down -v       # arrêter et supprimer les volumes
+  ```
 
 ---
 
 ## 📌 Résumé des commandes (Quickstart)
 
 ```bash
-docker compose up -d
-docker compose exec app node ace generate:key
-docker compose exec app node ace migration:run
-docker compose exec app node ace db:seed
-docker compose exec app node ace serve --watch
-````
-
+git clone <url-du-repo>
+cd <nom-du-projet>
+npm install
+cp .env.example .env
+node ace generate:key
+node ace migration:run
+node ace db:seed
+npm run dev            # ou node ace serve --watch
+```
 ---
 
 ## 💡 Notes importantes
 
 - **Sécurité :** Ne poussez jamais votre vrai fichier `.env` sur GitHub. Ajoutez `.env` et `node_modules/` à votre `.gitignore`.
-- **Réseau Docker :** Tout tourne dans Docker, Node et MySQL communiquent via le même réseau interne.
-- **Commandes Node :** Pour toute commande Node/Adonis, utilisez toujours le préfixe `docker compose exec app <commande>`.
+- **Réseau Docker :** Si vous utilisez le conteneur MySQL, les ports sont exposés sur
+  `localhost` grâce à la configuration du `docker-compose.yml`.
+- **Commandes Node :** Les commandes `node ace` peuvent s'exécuter localement ; il
+  n'est plus nécessaire de les préfixer par `docker compose exec` à moins que
+  vous souhaitiez faire tourner l'application **dans le container**.
