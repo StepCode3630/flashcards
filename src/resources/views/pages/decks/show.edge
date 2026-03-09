@@ -1,6 +1,5 @@
 @component('components/layout', { title: deck.name || 'Deck' })
   <div class="deck-container">
-    {{-- En-tête du Deck --}}
     <div class="deck-header-info">
       <div class="title-section">
         <h1>
@@ -43,9 +42,11 @@
         <tbody>
           @if(deck.cards && deck.cards.length > 0)
             @each(card in deck.cards)
-              <tr class="row-cliquable">
+              <tr class="row-clickable">
                 <td class="card-question">
-                  <a href="{{ route('card.show', { id: card.id }) }}" class="stretched-link">{{ card.question }}</a>
+                  <a href="{{ route('card.show', { id: card.id }) }}" class="stretched-link">
+                    {{ card.question }}
+                  </a>
                 </td>
                 <td class="card-answer">
                   {{ card.answer }}
@@ -55,7 +56,7 @@
           @else
             <tr>
               <td colspan="2" class="empty-msg">
-                Ce deck est encore vide...
+                Ce deck est encore vide :(
               </td>
             </tr>
           @end
