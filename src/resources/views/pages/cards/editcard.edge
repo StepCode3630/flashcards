@@ -1,0 +1,36 @@
+@component('components/layout', { title: 'Modifier une carte' })
+  <div class="form-card">
+    <h1>
+      Modifier la carte : {{ card.question }}
+    </h1>
+
+    <form method="POST" action="{{ route('card.update', { id: card.id }) }}">
+      {{ csrfField() }}
+      <input type="hidden" name="cardId" value="{{ card.id }}" />
+      <div>
+        <label for="question">Question</label>
+        <input type="text" id="question" name="question" value="{{ old('question') ?? card.question }}" />
+        @inputError('question')
+          <p style="color: #ef4444; font-size: 0.8rem; margin-top: 0.5rem; font-weight: 500;">
+            {{ $messages.join(', ') }}
+          </p>
+        @end
+      </div>
+
+      <div>
+        <label for="answer">Réponse</label>
+        <textarea id="answer" name="answer">{{ old('answer') ?? card.answer }}</textarea>
+        @inputError('answer')
+          <p style="color: #ef4444; font-size: 0.8rem; margin-top: 0.5rem; font-weight: 500;">
+            {{ $messages.join(', ') }}
+          </p>
+        @end
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Enregistrer</button>
+        <a href="{{ route('card.show', { id: card.id }) }}" class="btn-cancel">Abandonner</a>
+      </div>
+    </form>
+  </div>
+@endcomponent

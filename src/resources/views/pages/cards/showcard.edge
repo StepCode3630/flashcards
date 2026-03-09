@@ -30,7 +30,7 @@
 
   <div class="card-actions">
     <a href="{{ route('deck.show', { id: card.deckId }) }}" class="btn-secondary">Ok</a>
-    <a href="" class="btn-primary">Modifier</a>
+    <a href="{{ route('card.edit', { id: card.id }) }}" class="btn-primary">Modifier</a>
     <button type="button" class="btn-danger-light" onclick="openModal('{{ card.id }}')">Supprimer</button>
 
   </div>
