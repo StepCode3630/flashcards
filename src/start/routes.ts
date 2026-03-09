@@ -9,7 +9,6 @@
 const DecksController = () => import('#controllers/decks_controller')
 const CardsController = () => import('#controllers/cards_controller')
 import router from '@adonisjs/core/services/router'
-import { get } from 'http'
 
 //Decks routes
 router.get('/', [DecksController, 'index']).as('home')
