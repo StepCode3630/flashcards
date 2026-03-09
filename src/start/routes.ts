@@ -29,3 +29,5 @@ router.get('/decks/:deckId/cards/create', [CardsController, 'create']).as('cards
 router.post('/card/create', [CardsController, 'store']).as('card.store')
 
 router.get('/card/:id/show', [CardsController, 'show']).as('card.show')
+
+router.delete('/card/:id/destroy', [CardsController, 'destroy']).as('card.destroy')
