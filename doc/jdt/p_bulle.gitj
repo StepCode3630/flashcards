@@ -8,21 +8,19 @@
     {
       "id": "41d6fd74-9aa4-4e44-883b-3b6a2f43dca3",
       "type": "commitless",
-      "name": "chore(théorie et explication du projet par le prof)",
+      "name": "learn(théorie et explication du projet par le prof)",
       "description": "",
-      "date": "2026-01-14T11:20:00.000Z",
+      "date": "2026-01-14T12:20",
       "duration": 120,
-      "status": "Done",
       "author": "StepCode3630"
     },
     {
       "id": "8113b3db-40c1-4547-9958-83172f5cd6f7",
       "type": "commitless",
-      "name": "chore(explication du prof)",
+      "name": "learn(explication du prof)",
       "description": "",
       "date": "2026-01-21T12:20",
       "duration": 15,
-      "status": "Done",
       "author": "StepCode3630"
     },
     {
@@ -41,19 +39,18 @@
     {
       "id": "90501b79-53c5-426c-8cd9-393b0ab3f8d3",
       "type": "commitless",
-      "name": "chore(explication du prof)",
+      "name": "learn(explication du prof)",
       "description": "Explication du prof concernant le test formatif",
-      "date": "2026-01-28T14:30:00.000Z",
+      "date": "2026-01-28T15:30",
       "duration": 65,
-      "status": "Done",
       "author": "StepCode3630"
     },
     {
       "id": "4d273c73-2ac2-44ce-8d31-1749e4ffeea2",
       "type": "commitless",
-      "name": "chore(base de donnée)",
+      "name": "learn(base de donnée)",
       "description": "Explication de comment créer la base de donnée par le prof",
-      "date": "2026-02-04T13:25:00.000Z",
+      "date": "2026-02-04T14:25",
       "duration": 45,
       "status": "DONE",
       "author": "StepCode3630"
@@ -90,6 +87,19 @@
       "duration": 10,
       "status": "DONE",
       "author": "StepCode3630"
+    },
+    {
+      "id": "bec72a8b-da67-4946-9c71-f8b26c1e0d24",
+      "type": "commitpatch",
+      "sha": "456d7c2180edd7a1a92befa5072b62259db703cb",
+      "url": "https://github.com/StepCode3630/flashcards/commit/456d7c2180edd7a1a92befa5072b62259db703cb",
+      "name": "fix(résout d'un problème avec le jdt): Terminé",
+      "description": "",
+      "date": "2026-02-11T12:45:00.000Z",
+      "duration": 15,
+      "status": "Done",
+      "author": "StepCode3630",
+      "patch": true
     }
   ]
 }
