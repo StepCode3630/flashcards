@@ -13,6 +13,7 @@
       <div class="deck-actions">
         <a href="{{ route('deck.edit', { id: deck.id }) }}" class="btn-secondary">Modifier</a>
         <button type="button" class="btn-danger-light" onclick="openModal('{{ deck.id }}')">Supprimer</button>
+        <a href="{{ route('deck.study', { id: deck.id }) }}" class="btn-primary">S'exercer</a>
       </div>
     </div>
 
