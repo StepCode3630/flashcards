@@ -4,8 +4,9 @@
       Modifier la carte : {{ card.question }}
     </h1>
 
-    <form method="POST" action="{{ route('card.update', { id: card.id }) }}">
+    <form method="POST" action="{{ route('card.update', { id: card.id }) }}?_method=PUT">
       {{ csrfField() }}
+      <input type="hidden" name="deckId" value="{{ card.deckId }}" />
       <input type="hidden" name="cardId" value="{{ card.id }}" />
       <div>
         <label for="question">Question</label>
