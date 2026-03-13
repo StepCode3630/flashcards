@@ -78,4 +78,12 @@ export default class DecksController {
     session.flash('success', `Deck ${deck.name} supprimé avec succès`)
     return response.redirect().toRoute('home')
   }
+
+  /**
+   * Study a deck
+   */
+  async study({ params, view }: HttpContext) {
+    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
+    return view.render('pages/decks/study.edge', { title: `Étudier le deck ${deck.name}`, deck })
+  }
 }

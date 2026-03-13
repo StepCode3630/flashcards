@@ -1,0 +1,27 @@
+@component('components/layout', { title: deck.name || 'Deck' })
+  <div class="deck-container">
+    <div class="deck-header-info">
+      <div class="title-section">
+        <h1>
+          <span>Vous avez choisi le deck : <br /></span>{{ deck.name || 'Sans nom' }}
+        </h1>
+
+      </div>
+
+      <div class="deck-actions">
+        <p>
+          S'exercer en mode
+        </p>
+        <select name="" id="">
+          <option value="Normal" selected>
+            Normal
+          </option>
+          <option value="2">
+            Révision espacée
+          </option>
+        </select>
+      </div>
+    </div>
+    <button>C'est parti !</button>
+
+  @endcomponent
