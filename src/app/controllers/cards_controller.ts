@@ -65,7 +65,7 @@ export default class CardsController {
     const deckUpdated = await card.save()
 
     session.flash('success', `Carte ${card.question} modifiée avec succès`)
-    return response.redirect().toRoute('card.show', { id: card.id })
+    return response.redirect().toRoute('deck.show', { id: card.deckId })
   }
 
   /**
