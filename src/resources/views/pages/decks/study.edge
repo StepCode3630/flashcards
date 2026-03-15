@@ -12,16 +12,24 @@
         <p>
           S'exercer en mode
         </p>
-        <select name="" id="">
-          <option value="Normal" selected>
-            Normal
-          </option>
-          <option value="2">
-            Révision espacée
-          </option>
-        </select>
+        <form action="{{ route('deck.study.first', { id: deck.id }) }}" method="GET" class="study-mode-form">
+          <select name="mode" id="mode-select">
+            <option value="basique" selected>
+              Basique
+            </option>
+            <option value="revision">
+              Révision espacée
+            </option>
+          </select>
+          <a
+            href="{{ route('deck.study.first', { id: deck.id }) }}"
+            class="btn-primary"
+            onclick="event.preventDefault(); this.closest('form').submit();"
+          >
+            <button type="submit" class="btn-primary">C'est parti !</button>
+
+          </a>
+        </form>
       </div>
     </div>
-    <button>C'est parti !</button>
-
   @endcomponent

@@ -25,6 +25,7 @@ router.put('/deck/:id/update', [DecksController, 'update']).as('deck.update')
 router.delete('/deck/:id/destroy', [DecksController, 'destroy']).as('deck.destroy')
 
 router.get('/deck/:id/study', [DecksController, 'study']).as('deck.study')
+router.get('/deck/:id/study/first', [DecksController, 'studyFirst']).as('deck.study.first')
 
 //Cards routes
 router.get('/decks/:deckId/cards/create', [CardsController, 'create']).as('cards.create')

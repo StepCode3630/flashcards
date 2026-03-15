@@ -86,4 +86,24 @@ export default class DecksController {
     const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
     return view.render('pages/decks/study.edge', { title: `Étudier le deck ${deck.name}`, deck })
   }
+
+  async studyFirst({ params, request, response, view }: HttpContext) {
+    const mode = request.input('mode', 'basique')
+    const deck = await Deck.query()
+      .where('id', params.id)
+      .preload('cards', (query) => query.orderBy('id', 'asc'))
+      .firstOrFail()
+
+    if (!deck.cards || deck.cards.length === 0) {
+      return response.redirect().toRoute('deck.show', { id: deck.id })
+    }
+
+    const card = deck.cards[0]
+    return view.render('pages/decks/study_first.edge', {
+      title: `Étude : ${deck.name} (première carte)`,
+      deck,
+      card,
+      mode,
+    })
+  }
 }
