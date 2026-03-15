@@ -89,7 +89,14 @@ export default class DecksController {
 
   async studyFirst({ params, request, response, view }: HttpContext) {
     const mode = request.input('mode', 'basique')
-    const index = Number(request.input('index', 0))
+    let index = Number(request.input('index', 0))
+    let correctCount = Number(request.input('correctCount', 0))
+    const result = request.input('result')
+
+    if (result === 'juste') {
+      correctCount += 1
+    }
+
     const deck = await Deck.query()
       .where('id', params.id)
       .preload('cards', (query) => query.orderBy('id', 'asc'))
@@ -102,9 +109,11 @@ export default class DecksController {
     const totalCards = deck.cards.length
     if (index >= totalCards) {
       return view.render('pages/decks/studyFinal.edge', {
-        title: `Étude terminée : ${deck.name}`,
+        title: `Vous avez exercé le deck ${deck.name}`,
         deck,
         totalCards,
+        mode,
+        correctCount,
       })
     }
 
@@ -119,6 +128,7 @@ export default class DecksController {
       index,
       nextIndex,
       totalCards,
+      correctCount,
     })
   }
 }

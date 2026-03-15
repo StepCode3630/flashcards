@@ -1,0 +1,23 @@
+@component('components/layout', { title: title })
+  <div class="deck-container">
+    <div class="deck-header-info">
+      <div class="title-section">
+        <h1>
+          Vous avez exercé le deck
+        </h1>
+        <h2>
+          {{ deck.name }}
+        </h2>
+        <p>
+          Mode : {{ mode === 'basique' ? 'Basique' : mode }}
+        </p>
+        <p>
+          Correct : {{ correctCount }} / {{ totalCards }}
+        </p>
+      </div>
+      <div class="deck-actions">
+        <a href="" class="btn-primary">Ok</a>
+      </div>
+    </div>
+  </div>
+@endcomponent

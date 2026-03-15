@@ -30,6 +30,7 @@
         <form action="{{ route('deck.study.first', { id: deck.id }) }}" method="GET">
           <input type="hidden" name="mode" value="{{ mode }}" />
           <input type="hidden" name="index" value="{{ nextIndex }}" />
+          <input type="hidden" name="correctCount" value="{{ correctCount }}" />
           <input type="hidden" name="result" value="juste" />
           <button type="submit" class="btn-primary">Juste</button>
         </form>
@@ -37,6 +38,7 @@
         <form action="{{ route('deck.study.first', { id: deck.id }) }}" method="GET">
           <input type="hidden" name="mode" value="{{ mode }}" />
           <input type="hidden" name="index" value="{{ nextIndex }}" />
+          <input type="hidden" name="correctCount" value="{{ correctCount }}" />
           <input type="hidden" name="result" value="faux" />
           <button type="submit" class="btn-danger-light">Faux</button>
         </form>
