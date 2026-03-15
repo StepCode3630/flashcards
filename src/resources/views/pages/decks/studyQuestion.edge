@@ -1,0 +1,59 @@
+@component('components/layout', { title: title })
+  <div class="deck-container">
+
+    <div class="card-study">
+
+      <div class="card-scene">
+        <div class="card-details" title="Cliquez pour retourner la carte">
+          <div class="card-front">
+            <h1>
+              Question
+            </h1>
+            <p>
+              {{ card.question }}
+            </p>
+            <small>Cliquez pour voir la réponse</small>
+          </div>
+          <div class="card-back">
+            <h1>
+              Réponse
+            </h1>
+            <p>
+              {{ card.answer }}
+            </p>
+            <small>Cliquez pour afficher les boutons Juste / Faux</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-buttons" id="card-buttons">
+        <form action="{{ route('deck.study.first', { id: deck.id }) }}" method="GET">
+          <input type="hidden" name="mode" value="{{ mode }}" />
+          <input type="hidden" name="index" value="{{ nextIndex }}" />
+          <input type="hidden" name="result" value="juste" />
+          <button type="submit" class="btn-primary">Juste</button>
+        </form>
+
+        <form action="{{ route('deck.study.first', { id: deck.id }) }}" method="GET">
+          <input type="hidden" name="mode" value="{{ mode }}" />
+          <input type="hidden" name="index" value="{{ nextIndex }}" />
+          <input type="hidden" name="result" value="faux" />
+          <button type="submit" class="btn-danger-light">Faux</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cardDetails = document.querySelector(".card-details");
+
+    const cardButtons = document.getElementById("card-buttons");
+
+    if (cardDetails && cardButtons) {
+      cardDetails.addEventListener("click", () => {
+        const flipped = cardDetails.classList.toggle("is-flipped");
+        cardButtons.style.display = flipped ? "flex" : "none";
+      });
+    }
+  </script>
+@endcomponent
