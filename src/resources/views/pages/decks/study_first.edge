@@ -1,37 +1,33 @@
 @component('components/layout', { title: title })
   <div class="deck-container">
-    <div class="deck-header-info">
-      <div class="title-section">
-        <h1>
-          Étude du deck : {{ deck.name || 'Sans nom' }}
-        </h1>
-        <p>
-          Mode sélectionné : <strong>{{ mode === 'basique' ? 'Basique' : 'Révision espacée' }}</strong>
-        </p>
-      </div>
-      <div class="deck-actions">
-        <a href="{{ route('deck.show', { id: deck.id }) }}" class="btn-secondary">Retour au deck</a>
-      </div>
-    </div>
 
     <div class="card-study">
-      <h2>
-        Première carte
-      </h2>
-      <div class="card-box">
-        <p>
-          <strong>Question :</strong>
-        </p>
-        <p class="question">
-          {{ card.question }}
-        </p>
 
-        <p>
-          <strong>Réponse :</strong>
-        </p>
-        <p class="answer">
-          {{ card.answer }}
-        </p>
+      <div class="card-scene">
+        <div
+          class="card-details"
+          onclick="this.classList.toggle('is-flipped')"
+          title="Cliquez pour retourner la carte"
+        >
+          <div class="card-front">
+            <h1>
+              Question
+            </h1>
+            <p>
+              {{ card.question }}
+            </p>
+            <small>Cliquez pour voir la réponse</small>
+          </div>
+          <div class="card-back">
+            <h1>
+              Réponse
+            </h1>
+            <p>
+              {{ card.answer }}
+            </p>
+            <small>Cliquez pour revenir à la question</small>
+          </div>
+        </div>
       </div>
     </div>
   </div>
