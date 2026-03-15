@@ -74,7 +74,7 @@ export default class CardsController {
   async destroy({ params, session, response }: HttpContext) {
     const card = await Card.findOrFail(params.id)
     await card.delete()
-    session.flash('success', `Carte ${card.question} supprimée avec succès`)
+    session.flash('error', `Carte ${card.question} supprimée avec succès`)
     return response.redirect().toRoute('deck.show', { id: card.deckId })
   }
 }

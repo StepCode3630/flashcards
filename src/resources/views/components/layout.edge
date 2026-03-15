@@ -13,6 +13,7 @@
   <body>
     @include('partials/header')
     <div class="container">
+      @include('partials/flash')
       {{{ await $slots.main() }}}
     </div>
     @include('partials/footer')
