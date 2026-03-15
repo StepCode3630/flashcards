@@ -87,6 +87,7 @@ docker compose down -v  # supprime aussi les volumes
 
 # Régénérer la base de données
 db=migration:refresh --seed
+node ace migration:fresh --seed
 node ace migration:refresh --seed
 ```
 
